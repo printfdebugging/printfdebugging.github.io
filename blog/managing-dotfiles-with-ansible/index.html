@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://img.icons8.com/3d-fluency/94/processor.png"
+    />
+    <title>Sahil Gautam</title>
+
+    <div>
+      <a style="margin-right: 10px" href="/">Home</a>
+      <a
+        style="margin-right: 10px"
+        href="https://sahilgautam.in/blog/"
+        >Blog</a
+      >
+      <a style="margin-right: 10px" href="/atom.xml">RSS</a>
+      <a style="margin-right: 10px" href="https://sahilgautam.in/contact/"
+        >Contact</a
+      >
+    </div>
+  </head>
+  <body>
+    
+
+<h2>Managing dotfiles with Ansible</h2>
+
+<a href="/tags/">Tags</a>:
+    
+        <a style="margin-right:10px;" href="https://sahilgautam.in/tags/ansible/">#ansible</a>
+    
+        <a style="margin-right:10px;" href="https://sahilgautam.in/tags/devops/">#devops</a>
+    
+
+
+
+<p><strong>2024-06-21</strong></p>
+<div class="toc">
+
+    <ul>
+    
+        <li>
+            <a href="https://sahilgautam.in/blog/managing-dotfiles-with-ansible/#show-me-your-dotfiles">Show me your dotfiles</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://sahilgautam.in/blog/managing-dotfiles-with-ansible/#traditional-ways-to-manage-dotfiles">Traditional ways to manage dotfiles</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://sahilgautam.in/blog/managing-dotfiles-with-ansible/#what-does-ansible-bring-to-the-table">What does ansible bring to the table</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://sahilgautam.in/blog/managing-dotfiles-with-ansible/#ansible-just-a-spoonfull-from-the-bowl">Ansible, just a spoonfull from the bowl</a>
+            
+        </li>
+    
+    </ul>
+
+<div>
+<h2 id="show-me-your-dotfiles">Show me your dotfiles</h2>
+<p>Dotfiles are important. That's the first thing a linux hacker looks for on their
+potential partner's github. For those who don't know, dotfiles are linux configuration
+files, and since these are mostly hidden (starting with a .), so the name dotfiles.</p>
+<p>Why manage dotfiles, you might ask. Linux is very flexible, and you can customize it to your
+tastes and likings. Once you are done tinkering with the UI and the programs, and got a perfect
+system, you would want to save that system state somewhere. Then you wouldn't want to go over the
+whole process again, if you install linux on some new system. That's why the question
+"how to manage your dotfiles" exists.</p>
+<h2 id="traditional-ways-to-manage-dotfiles">Traditional ways to manage dotfiles</h2>
+<p>There are quite a few ways to manage the dotfiles. The first and the simplest being that you copy
+all your dotfiles to a git repositor, and then create a script which installs the usefull programs,
+and copies the files to their respective locations. Here instead of copying the files, you can
+create symbolic/hard links to the files as well.</p>
+<p>Another approach is using programs like <a href="https://www.gnu.org/software/stow/">GNU Stow</a> to manage the symlinks. What Stow does is
+that it can imitate the dotfiles directory's structure into some other directory. In simple words,
+if you have <code>.dotfiles/.local/(some files)</code>, then it can symlink/hardlink all the files to
+<code>~/.local/(some files)</code>.</p>
+<p>Although these approaches work for some people, these are quite cumbersome. Like if you create
+symlinks for emacs's config files, everytime you start it, it will ask for whether to
+follow the symlink or not. And what if you add new files to the .dotfiles directory, then you
+have th learn new stow commands. All these approaches are for file management, what about my
+packages??</p>
+<h2 id="what-does-ansible-bring-to-the-table">What does ansible bring to the table</h2>
+<p>Ansible if explained in few words, is used to bring the system to a desired state. It's written
+in python and is not limited to just the localhost. If you have 100 systems on your network, then you
+can install your dotfiles on all of them at the same time. It's not limited to just files, but packages,
+users and the list goes on and on.</p>
+<p>If using a shell script, then all the tasks run over again with each execution, or you have to
+put conditionals everywhere. On the other hand ansible skips those <code>tasks</code> (task? in a minute) that
+are already at the desired state.</p>
+<h2 id="ansible-just-a-spoonfull-from-the-bowl">Ansible, just a spoonfull from the bowl</h2>
+<p>So you create a directory for ansible related files, and put it on version control (preferred).
+Ansible looks for some files in that directory, namely <code>main.yml</code>, <code>inventory[.yml]</code>, <code>[ansible.cfg]</code>.
+The inventory file is for specifying the target host information, like the IP address, the group(s) they
+are in, the variables related to the hosts etc. The ansible.cfg file is for specifying settings like
+where is the inventory file, whether to ask for sudo/vault password or not, path to python interpreter etc.</p>
+<p>Here's an example ansible.cfg file. All the things should make sense (I hope).</p>
+<pre data-lang="cfg" style="background-color:#282828;color:#fdf4c1aa;" class="language-cfg "><code class="language-cfg" data-lang="cfg"><span style="color:#fa5c4b;">[defaults]
+</span><span style="color:#fdf4c1;">inventory </span><span style="color:#fe8019;">=</span><span> inventory</span><span style="color:#fe8019;">.</span><span>yml
+</span><span style="color:#fdf4c1;">ask_vault_pass</span><span style="color:#fe8019;">=</span><span style="color:#d3869b;">True
+</span><span style="color:#fdf4c1;">interpreter_python</span><span style="color:#fe8019;">=/</span><span>usr</span><span style="color:#fe8019;">/</span><span>bin</span><span style="color:#fe8019;">/</span><span>python
+</span><span>
+</span><span style="color:#fa5c4b;">[privilege_escalation]
+</span><span style="color:#fdf4c1;">become </span><span style="color:#fe8019;">= </span><span style="color:#d3869b;">True
+</span><span style="color:#fdf4c1;">become_ask_pass </span><span style="color:#fe8019;">= </span><span style="color:#d3869b;">True
+</span></code></pre>
+<p>Now talking about main.yml, it's called a playbook. A playbook has plays, and a play is a
+bunch of tasks which execute one after other. A task looks something like this.
+It's highly suggested to learn <a href="https://en.wikipedia.org/wiki/YAML">YAML</a> before starting ansible,
+or else you will give up mid way, as you won't understand much.</p>
+<pre data-lang="yaml" style="background-color:#282828;color:#fdf4c1aa;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span>- </span><span style="font-weight:bold;color:#8ec07c;">name</span><span>: </span><span style="color:#b8bb26;">install neovim and dependencies
+</span><span>  </span><span style="font-weight:bold;color:#8ec07c;">tags</span><span>:
+</span><span>    - </span><span style="color:#b8bb26;">neovim
+</span><span>    - </span><span style="color:#b8bb26;">packages
+</span><span>  </span><span style="font-weight:bold;color:#8ec07c;">community.general.pacman</span><span>:
+</span><span>    </span><span style="font-weight:bold;color:#8ec07c;">name</span><span>:
+</span><span>      - </span><span style="color:#b8bb26;">neovim
+</span><span>      - </span><span style="color:#b8bb26;">git
+</span><span>      - </span><span style="color:#b8bb26;">npm
+</span><span>    </span><span style="font-weight:bold;color:#8ec07c;">state</span><span>: </span><span style="color:#b8bb26;">latest
+</span><span>    </span><span style="font-weight:bold;color:#8ec07c;">extra_args</span><span>: </span><span style="color:#b8bb26;">&quot;--nodeps --noconfirm --overwrite &#39;*&#39;&quot;
+</span></code></pre>
+<p>This task is tagged as <code>neovim</code> and <code>packages</code>, it uses the <code>pacman</code> module, and
+it installs the three packages named. The packages should be in the latest state, and
+it specifies some flags for pacman(package manager for Archlinux). I have a few tags like
+<code>files</code>, <code>packages</code>, <code>package specific(neovim, tmux etc)</code>, using with I can target tasks
+to be executed.</p>
+<p>Then there is a concept roles, which is a group of these tasks and the associated/required files.
+Almost anything that you can do on the shell can be done with ansible, more elegantly. Plus it
+can is distribution agnostic, and with some tweeks on the tasks/roles, you can setup your dotfiles
+on any linux distribution.</p>
+<p>I created a wrapper script around ansible, named <a href="https://github.com/printfdebugging/dotfiles/blob/main/dotfiles">dotfiles</a> so that I don't have to
+run all the long long ansible commands over and over. Here is the stdout of my dotfiles script.</p>
+<pre data-lang="bash" style="background-color:#282828;color:#fdf4c1aa;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#fdf4c1;">󰣇  dotfiles
+</span><span style="color:#fdf4c1;">specify action in arguments
+</span><span style="color:#fdf4c1;">Usage:
+</span><span style="color:#fdf4c1;">dotfiles
+</span><span>    </span><span style="color:#fdf4c1;">files           sync all the files
+</span><span>    </span><span style="color:#fdf4c1;">packages        sync all the packages
+</span><span>    </span><span style="color:#fdf4c1;">full            start full system setup
+</span><span>    </span><span style="color:#fdf4c1;">status          show pretty git status from /home/printfdebugging/repos/</span><span style="color:#fe8019;">*
+</span><span>    </span><span style="color:#fdf4c1;">init            install essential packages like ansible, python-watchdog..
+</span></code></pre>
+<p>And did I tell you that all my <code>ssh keys</code> and <code>.gitconfigs</code> are in the public dotfiles repo, encrypted
+with <code>ansible-vault</code>? That way I don't have to do anything but remember my sudo and the vault passwords,
+and I have my system everywhere. Want to setup a VM, just clone dotfiles and run <code>dotfiles init &amp;&amp; dotfiles full</code>.</p>
+<pre data-lang="yaml" style="background-color:#282828;color:#fdf4c1aa;" class="language-yaml "><code class="language-yaml" data-lang="yaml"><span style="font-weight:bold;color:#8ec07c;">private_ssh_key_file</span><span>: </span><span style="color:#fa5c4b;">!vault |
+</span><span style="color:#b8bb26;">  $ANSIBLE_VAULT;1.1;AES256
+</span><span style="color:#b8bb26;">  37303736323131396536383363323933663436363335653061343365643832353036383035666665
+</span><span style="color:#b8bb26;">  3663643136613130343266616462646633653930626434620a393533626166633130643666396336
+</span><span style="color:#b8bb26;">  ...
+</span></code></pre>
+<p>If you found it somewhat intriguing, and have comeup with something cool, then make sure to drop
+an email. Here are <a href="https://github.com/printfdebugging/dotfiles">my dotfiles</a> if you want to copy paste ;).</p>
+ 
+  </body>
+  <footer>
+    <hr />
+    © 2024 Sahil Gautam | Created with 🔥
+    <a href="https://www.getzola.org/">Zola</a>
+  </footer>
+</html>

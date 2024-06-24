@@ -1,0 +1,396 @@
+/*
+ * Reaction Time Is A Factor In This
+ */
+@font-face {
+  font-family: JetBrainsMono Nerd Font;
+  src: url("/fonts/JetBrainsMonoNerdFont-Regular.ttf");
+}
+
+body {
+  background-color: #282c34;
+  /* background-image: url(/second.jpg); */
+  /* background-repeat: no-repeat; */
+  /* background-position: center center; */
+  /* background-attachment: fixed; /* Keeps the background fixed */
+  color: #d8dee9;
+  max-width: 960px;
+  margin: 1.5rem auto !important;
+  padding: 0 1.5rem;
+  float: none !important;
+  font-size: 1.2rem;
+  line-height: 1.45em;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: calc(50% - 520px); /* Adjust width as needed based on your max-width */
+  background-color: black; /* Background color for the left and right areas */
+  z-index: -1; /* Push the pseudo-elements behind the content */
+}
+
+body::before {
+  left: 0;
+}
+
+body::after {
+  right: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* color: #8fbcbb; */
+}
+
+h1 {
+  font-size: 2.75rem;
+  line-height: 2.25rem;
+  margin: 1.9rem 0 0 0;
+}
+
+h2 {
+  font-size: 2.25rem;
+  line-height: 2.15rem;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1.75rem;
+}
+
+p.breadcrumbs {
+  color: #8fbcbb;
+}
+
+p.mastodon {
+  text-align: center;
+}
+
+p.motto {
+  font-style: italic;
+}
+
+p.page-next {
+  text-align: right;
+  margin-top: 0.65rem;
+  margin-bottom: -0.5rem;
+}
+
+p.tags {
+  font-size: 1.25rem;
+  line-height: 2rem;
+}
+
+a {
+  color: #81a1c1;
+  text-decoration: none;
+  border-bottom: 1px dashed #4c566a;
+}
+
+a:hover {
+  color: #bf616a;
+  border-bottom: none;
+}
+
+header a {
+  font-size: 1.5rem;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+blockquote {
+  border-left: 0.1rem solid #8fbcbb;
+  font-style: italic;
+  padding: 0 1em;
+}
+
+code {
+  background-color: #21252b;
+  padding: 0.1rem 0.2rem;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 1rem;
+}
+
+pre code {
+  /* border-left: 0.4rem solid #8fbcbb; */
+  page-break-inside: avoid;
+  padding: 0.5rem 1rem;
+  line-height: 1.3rem;
+  font-size: 1rem;
+  max-width: 100%;
+  display: block;
+  overflow: auto;
+  overflow-x: auto;
+}
+
+img {
+  max-width: 100%;
+}
+
+img.centre {
+  display: block;
+  margin: 1rem auto;
+}
+
+img.floatleft {
+  float: left;
+  margin: 0 1rem 1rem 0;
+}
+
+img.floatright {
+  float: right;
+  margin: 0 0 1rem 1rem;
+}
+
+ul {
+  list-style: square;
+  padding-left: 1.2rem;
+}
+
+ul li {
+  padding-bottom: 0.5rem;
+}
+
+ul.latest-list {
+  font-size: 1.2rem;
+  line-height: 1.45em;
+}
+
+ul.page-list a,
+ul.latest-list a {
+  font-size: 1.85rem;
+  line-height: 2rem;
+}
+
+hr {
+  height: 1px; /* Hairline height */
+  border: none; /* Removes the default border */
+  background-color: #e9ecef; /* Example background color, change to your preference */
+  margin: 0.1rem 0; /* Example margin, adjust as needed */
+}
+
+footer {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 1.5em;
+}
+
+#greeting {
+  font-size: 1.45rem;
+  line-height: 1.3em;
+}
+
+#hawbanner {
+  background-image: url(img/haw-banner.png);
+  display: block;
+  text-indent: -9999px;
+  width: 870px;
+  height: 150px;
+  border-bottom: none;
+}
+
+#hawsubtitle p {
+  font-family: monospace;
+  font-size: 1.2rem;
+  text-align: right;
+  margin-top: 0;
+  color: #b48ead;
+}
+
+#hawsubtitle a,
+#hawsubtitle a:hover {
+  background-color: #000;
+  color: #b48ead;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+#mainMenu {
+  font-size: 1.45rem;
+  margin-bottom: 1.2rem;
+}
+
+.author {
+  font-weight: bold;
+  color: #ebcb8b;
+}
+
+.boldWords {
+  font-weight: bold;
+}
+
+.clear {
+  clear: both;
+}
+
+.bottomMenu {
+  margin-top: 2em;
+}
+
+.feed {
+  color: #d08770;
+}
+
+.haw {
+  margin-bottom: 0;
+}
+
+.headline {
+  margin-bottom: 2.35rem;
+}
+
+.love {
+  color: red;
+}
+
+.meta {
+  margin-top: 0.5rem;
+  color: #5d6d7e;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.separator {
+  color: #8fbcbb;
+  padding: 0 0.4rem;
+}
+
+.star {
+  font-size: 2rem;
+}
+
+.tag-count {
+  vertical-align: super;
+  font-size: 1rem;
+}
+
+/* Separators */
+/* See https://stackoverflow.com/a/26634224 */
+
+.readMore {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #8fbcbb;
+  margin-top: 1.5rem;
+}
+
+.readMore::before,
+.readMore::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #8fbcbb;
+}
+
+.readMore:not(:empty)::before {
+  margin-right: 0.25em;
+}
+
+.readMore:not(:empty)::after {
+  margin-left: 0.25em;
+}
+
+/* Footnotes */
+
+.footnote-definition p {
+  display: inline;
+}
+
+.footnote-definition + .footnote-definition {
+  margin-top: 1em;
+}
+
+.footnote-reference,
+.footnote-definition-label {
+  text-decoration: none;
+}
+
+.footnote-reference:before,
+.footnote-definition-label:before {
+  content: "[";
+}
+
+.footnote-reference:after,
+.footnote-definition-label:after {
+  content: "]";
+}
+
+.footnote-reference a {
+  text-decoration: none;
+}
+
+.toc {
+  margin: 0; /* Remove margins */
+  padding: 0; /* Remove padding */
+  list-style-type: none; /* Remove bullet points for list items */
+}
+
+ul li {
+  margin: 0; /* Remove margins for list items */
+  padding: 0; /* Remove padding for list items */
+}
+
+.toc ul li {
+  margin: 0; /* Remove margins for list items */
+  padding: 0; /* Remove padding for list items */
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3b3f4c #21252b;
+  /* thumb and track color */
+}
+
+/* Works on Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+  width: 6px; /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #21252b; /* color of the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888888; /* color of the scroll thumb */
+  border-radius: 10px; /* roundness of the scroll thumb */
+  border: 2px solid #f0f0f0; /* border around the scroll thumb */
+}
+
+/* black = "#181a1f", */
+/* 		bg0 = "#282c34", */
+/* 		bg1 = "#31353f", */
+/* 		bg2 = "#393f4a", */
+/* 		bg3 = "#3b3f4c", */
+/* 		bg_d = "#21252b", */
+/* 		bg_blue = "#73b8f1", */
+/* 		bg_yellow = "#ebd09c", */
+/* 		fg = "#abb2bf", */
+/* 		purple = "#c678dd", */
+/* 		green = "#98c379", */
+/* 		orange = "#d19a66", */
+/* 		blue = "#61afef", */
+/* 		yellow = "#e5c07b", */
+/* 		cyan = "#56b6c2", */
+/* 		red = "#e86671", */
+/* 		grey = "#5c6370", */
+/* 		light_grey = "#848b98", */
+/* 		dark_cyan = "#2b6f77", */
+/* 		dark_red = "#993939", */
+/* 		dark_yellow = "#93691d", */
+/* 		dark_purple = "#8a3fa0", */
+/* 		diff_add = "#31392b", */
+/* 		diff_delete = "#382b2c", */
+/* 		diff_change = "#1c3448", */
+/* 		diff_text = "#2c5372", */
