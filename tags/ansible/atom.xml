@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Sahil Gautam - ansible</title>
+    <link rel="self" type="application/atom+xml" href="https://sahilgautam.in/tags/ansible/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://sahilgautam.in"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-06-21T00:00:00+00:00</updated>
+    <id>https://sahilgautam.in/tags/ansible/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Managing dotfiles with Ansible</title>
+        <published>2024-06-21T00:00:00+00:00</published>
+        <updated>2024-06-21T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Sahil Gautam
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://sahilgautam.in/blog/managing-dotfiles/"/>
+        <id>https://sahilgautam.in/blog/managing-dotfiles/</id>
+        
+        <content type="html" xml:base="https://sahilgautam.in/blog/managing-dotfiles/">&lt;p&gt;Taking stuff down for some time. I am working on the site, integrating it with emacs. Once that works, it will be up and running :)&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note that this post required some work before it could be usefull to anyone. That needs time, which I
+don&#x27;t have right now. Sorry but it&#x27;s a 404 not found!&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+</content>
+        
+    </entry>
+</feed>
