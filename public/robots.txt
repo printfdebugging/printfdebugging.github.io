@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 Allow: /
-Sitemap: https://printfdebugging.github.io/sitemap.xml
+Sitemap: https://sahilgautam.in/sitemap.xml
