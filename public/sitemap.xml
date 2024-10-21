@@ -4,55 +4,28 @@
         <loc>https://sahilgautam.in/</loc>
     </url>
     <url>
-        <loc>https://sahilgautam.in/about/</loc>
+        <loc>https://sahilgautam.in/blogs/</loc>
     </url>
     <url>
-        <loc>https://sahilgautam.in/posts/</loc>
+        <loc>https://sahilgautam.in/libreoffice/</loc>
     </url>
     <url>
-        <loc>https://sahilgautam.in/posts/configuration/</loc>
-        <lastmod>2024-07-09</lastmod>
+        <loc>https://sahilgautam.in/libreoffice/01-qt-or-win32/</loc>
+        <lastmod>2024-10-22</lastmod>
     </url>
     <url>
-        <loc>https://sahilgautam.in/posts/markdown/</loc>
-        <lastmod>2022-05-01</lastmod>
+        <loc>https://sahilgautam.in/libreoffice/page/1/</loc>
     </url>
     <url>
-        <loc>https://sahilgautam.in/posts/math-symbol/</loc>
-        <lastmod>2023-01-06</lastmod>
-    </url>
-    <url>
-        <loc>https://sahilgautam.in/posts/page/1/</loc>
-    </url>
-    <url>
-        <loc>https://sahilgautam.in/posts/shortcode/</loc>
-        <lastmod>2024-06-14</lastmod>
-    </url>
-    <url>
-        <loc>https://sahilgautam.in/projects/</loc>
-    </url>
-    <url>
-        <loc>https://sahilgautam.in/projects/project-1/</loc>
-    </url>
-    <url>
-        <loc>https://sahilgautam.in/projects/project-2/</loc>
-    </url>
-    <url>
-        <loc>https://sahilgautam.in/projects/project-3/</loc>
-    </url>
-    <url>
-        <loc>https://sahilgautam.in/projects/project-4/</loc>
-    </url>
-    <url>
-        <loc>https://sahilgautam.in/projects/project-5/</loc>
+        <loc>https://sahilgautam.in/readme/</loc>
     </url>
     <url>
         <loc>https://sahilgautam.in/tags/</loc>
     </url>
     <url>
-        <loc>https://sahilgautam.in/tags/documentation/</loc>
+        <loc>https://sahilgautam.in/tags/libreoffice-dev/</loc>
     </url>
     <url>
-        <loc>https://sahilgautam.in/tags/example/</loc>
+        <loc>https://sahilgautam.in/tags/widget-toolkits/</loc>
     </url>
 </urlset>
