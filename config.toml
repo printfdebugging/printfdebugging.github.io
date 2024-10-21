@@ -30,8 +30,11 @@ menu = [
 ]
 
 socials = [
-    { name = "twitter", url = "https://twitter.com/not_matthias", icon = "twitter" },
-    { name = "github", url = "https://github.com/not-matthias/", icon = "github" },
+    { name = "github", url = "https://github.com/printfdebugging/", icon = "github" },
+    { name = "linkedin", url = "https://linkedin.com/in/printfdebugging/", icon = "linkedin" },
+    { name = "email", url = "mailto:sahil@libreoffice.org", icon = "email" },
+    { name = "youtube", url = "https://youtube.com/@printfdebugging", icon = "youtube" },
+    { name = "rss", url = "/atom.xml", icon = "rss" },
 ]
 
 custom_css = []
@@ -39,11 +42,11 @@ custom_css = []
 [extra.analytics]
 enabled = false
 
-[extra.analytics.goatcounter]
-user = "your_user"
-host = "example.com" # default= goatcounter.com
+# [extra.analytics.goatcounter]
+# user = "your_user"
+# host = "example.com" # default= goatcounter.com
 
-[extra.analytics.umami]
-website_id = "43929cd1-1e83...."
-host_url = "https://stats.mywebsite.com" # default: https://analytics.eu.umami.is
+# [extra.analytics.umami]
+# website_id = "43929cd1-1e83...."
+# host_url = "https://stats.mywebsite.com" # default: https://analytics.eu.umami.is
 
